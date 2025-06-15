@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  customer
+  sale
+}
+model Users{
+  @@map("users")
+  id String @id @default(uuid())
+  name String
+  email String @unique
+  password String
+  
+  role UserRole @default(customer)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at") 
+
+  deliveries Deliveries[]
+}
+
+enum DeliveryStatus {
+  processing
+  shipped
+  delivered
+}
+
+model Deliveries {
+  @@map("devileries")
+  id String @id @default(uuid())
+  description String
+  status DeliveryStatus
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at") 
+
+  user_id String
+  users Users @relation(fields: [user_id], references: [id])
+  deliveryLog DeliveryLog[]
+}
+
+
+model DeliveryLog{
+  id String @id @default(uuid())
+  description String
+ 
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime? @updatedAt @map("updated_at") 
+
+  delivery_id String
+  deliveries Deliveries @relation(fields: [delivery_id], references: [id])
+}
