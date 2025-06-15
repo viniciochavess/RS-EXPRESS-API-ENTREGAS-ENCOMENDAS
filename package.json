@@ -1,0 +1,31 @@
+{
+  "name": "rs-express-api-entregas-encomendas",
+  "version": "1.0.0",
+  "description": "Este projeto implementa uma rota para envio de pedidos no sistema, utilizando **Node.js**, **Prisma** como ORM e **Insomnia** para testes da API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "tsx watch src/server.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/viniciochavess/RS-EXPRESS-API-ENTREGAS-ENCOMENDAS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/viniciochavess/RS-EXPRESS-API-ENTREGAS-ENCOMENDAS/issues"
+  },
+  "homepage": "https://github.com/viniciochavess/RS-EXPRESS-API-ENTREGAS-ENCOMENDAS#readme",
+  "dependencies": {
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3",
+    "zod": "^3.25.64"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.1"
+  }
+}
